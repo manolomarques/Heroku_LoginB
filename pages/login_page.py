@@ -19,6 +19,16 @@ class LoginPage(BasePage):
         self.driver = driver
         self._visitar('https://the-internet.herokuapp.com/login')
         assert self._esta_visivel(self._login_form, 5)
+
     def com_(self, username, password):
         self._digitar(self._username_input, username)
         self._digitar(self._password_input, password)
+        self._click(self._submit_button)
+
+    def success_mesage_present(self):
+        return self._esta_visivel(self._success_message, 5)
+
+    def failure_message_present(self):
+        return self._esta_visivel(self._failure_message)
+
+    
